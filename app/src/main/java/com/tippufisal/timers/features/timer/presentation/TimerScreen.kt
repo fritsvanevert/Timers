@@ -28,7 +28,6 @@ fun TimerScreenContent(timerViewModel: TimerViewModel) {
     TimerScreen(
         timerValue = timerValue,
         onStartClick = { timerViewModel.startTimer() },
-        onPauseClick = { timerViewModel.pauseTimer() },
         onStopClick = { timerViewModel.stopTimer() }
     )
 }
@@ -37,7 +36,6 @@ fun TimerScreenContent(timerViewModel: TimerViewModel) {
 fun TimerScreen(
     timerValue: Long,
     onStartClick: () -> Unit,
-    onPauseClick: () -> Unit,
     onStopClick: () -> Unit
 ) {
     Column(
@@ -53,10 +51,6 @@ fun TimerScreen(
         ) {
             Button(onClick = onStartClick) {
                 Text("Start")
-            }
-            Spacer(modifier = Modifier.width(16.dp))
-            Button(onClick = onPauseClick) {
-                Text("Pause")
             }
             Spacer(modifier = Modifier.width(16.dp))
             Button(onClick = onStopClick) {

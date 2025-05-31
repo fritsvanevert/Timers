@@ -27,10 +27,6 @@ class TimerViewModel : ViewModel() {
         }
     }
 
-    fun pauseTimer() {
-        timerJob?.cancel()
-    }
-
     fun stopTimer() {
         _timer.value = 0
         timerJob?.cancel()
