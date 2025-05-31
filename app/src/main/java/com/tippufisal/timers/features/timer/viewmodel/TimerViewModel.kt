@@ -11,15 +11,18 @@ import kotlinx.coroutines.launch
 class TimerViewModel : ViewModel() {
     private val _timer = MutableStateFlow(0L)
     val timer = _timer.asStateFlow()
+    private var  startTime = 0L
 
     private var timerJob: Job? = null
 
     fun startTimer() {
+        startTime = System.currentTimeMillis()
         timerJob?.cancel()
         timerJob = viewModelScope.launch {
             while (true) {
                 delay(1000)
-                _timer.value++
+                var currentTime = System.currentTimeMillis()
+                _timer.value = (currentTime - startTime) / 1000
             }
         }
     }
